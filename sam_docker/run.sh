@@ -10,10 +10,11 @@ DOCKERHUBUSER=""
 function runContainer(){
     docker run -itd --name ${NAME} \
         -v /var/run/docker.sock:/var/run/docker.sock \
-        -v /usr/bin/docker:/usr/bin/docker \
+        -p 3000:3000 \
         --network bridge \
         -h ${NAME} \
-        ${NAME}
+        ${NAME} \
+        /bin/bash
 }
 
 function cleanup(){
