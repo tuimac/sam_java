@@ -12,6 +12,8 @@ services:
     container_name: awssam
     ports:
       - 3000:3000
+    volumes:
+      - /var/run/docker.sock:/var/run/docker.sock
     tty: true
     stdin_open: true
     networks:

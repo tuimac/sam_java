@@ -1,16 +1,18 @@
 #!/bin/bash
 
 PJTDIR='src'
-GITREPO='serverless_loca'
+GITREPO='serverless_local'
 
-# Create Project initial directory
+# Create Project initial directory if not exist
 cd ${GITREPO}
-sam init --no-interactive \
-        --app-template hello-world \
-        --runtime java11 \
-        --dependency-manager maven \
-        --package-type Zip \
-        --name ${PJTDIR}
+if [ ! -e ${PJTDIR} ]; then
+    sam init --no-interactive \
+            --app-template hello-world \
+            --runtime java11 \
+            --dependency-manager maven \
+            --package-type Zip \
+            --name ${PJTDIR}
+fi
 
 # Start local API Gateway
 cd ${PJTDIR}

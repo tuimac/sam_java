@@ -3,14 +3,18 @@ FROM alpine
 MAINTAINER tuimac
 
 EXPOSE 3000
+ENV AWS_DEFAULT_REGION=ap-northeast-1
+ARG gitusername=tuimac
+ARG gitemail=tuimac.devadm01@gmail.com
 
 WORKDIR /root
+
 ADD entrypoint.sh /root/entrypoint.sh
 
 RUN apk update && \
     apk upgrade && \
     apk add --no-cache tzdata bash python3 py3-pip python3-dev gcc py-configobj libusb linux-headers musl-dev curl ncurses git vim openjdk11-jre-headless docker tree && \
-    pip3 install aws-sam-cli && \
+    pip3 install aws-sam-cli awscli && \
     mkdir -p /etc/vim/backup && \
     mkdir -p /etc/vim/undo && \
     rm /etc/vim/vimrc && \
@@ -30,11 +34,7 @@ EOF' >> /root/.bashrc && \
     git clone https://github.com/tuimac/serverless_local.git && \
     cp /usr/share/zoneinfo/Asia/Tokyo /etc/localtime && \
     apk del tzdata && \
-    sam init --no-interactive \
-        --app-template hello-world \
-        --runtime java11 \
-        --dependency-manager maven \
-        --package-type Zip \
-        --name src
+    git config --global user.name "tuimac" && \
+    git config --global user.email "tuimac.devadm01@gmail.com"
 
 ENTRYPOINT ["./entrypoint.sh"]
