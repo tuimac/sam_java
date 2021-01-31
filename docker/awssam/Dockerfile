@@ -5,6 +5,7 @@ MAINTAINER tuimac
 EXPOSE 3000
 
 WORKDIR /root
+ADD entrypoint.sh /root/entrypoint.sh
 
 RUN apk update && \
     apk upgrade && \
@@ -28,4 +29,12 @@ _  ___ |_ |/ |/ / ____/ /     ____/ /_  ___ |  /  / /  \n\
 EOF' >> /root/.bashrc && \
     git clone https://github.com/tuimac/serverless_local.git && \
     cp /usr/share/zoneinfo/Asia/Tokyo /etc/localtime && \
-    apk del tzdata
+    apk del tzdata && \
+    sam init --no-interactive \
+        --app-template hello-world \
+        --runtime java11 \
+        --dependency-manager maven \
+        --package-type Zip \
+        --name src
+
+ENTRYPOINT ["./entrypoint.sh"]
