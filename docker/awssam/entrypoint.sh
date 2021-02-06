@@ -5,14 +5,14 @@ GITREPO='sam_java'
 
 # Create Project initial directory if not exist
 cd ${GITREPO}
-if [ ! -e ${PJTDIR} ]; then
-    sam init --no-interactive \
-            --app-template hello-world \
-            --runtime java11 \
-            --dependency-manager maven \
-            --package-type Zip \
-            --name ${PJTDIR}
-fi
+#if [ ! -e ${PJTDIR} ]; then
+#    sam init --no-interactive \
+#            --app-template hello-world \
+#            --runtime java11 \
+#            --dependency-manager maven \
+#            --package-type Zip \
+#            --name ${PJTDIR}
+#fi
 
 # Start local API Gateway
 #cd ${PJTDIR}

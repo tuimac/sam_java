@@ -13,7 +13,7 @@ ADD entrypoint.sh /root/entrypoint.sh
 
 RUN apk update && \
     apk upgrade && \
-    apk add --no-cache tzdata bash python3 py3-pip python3-dev gcc py-configobj libusb linux-headers musl-dev curl ncurses git vim openjdk11-jre-headless docker tree && \
+    apk add --no-cache tzdata bash python3 py3-pip python3-dev gcc py-configobj libusb linux-headers musl-dev curl ncurses git vim openjdk11-jre-headless docker tree maven && \
     pip3 install aws-sam-cli awscli && \
     mkdir -p /etc/vim/backup && \
     mkdir -p /etc/vim/undo && \
