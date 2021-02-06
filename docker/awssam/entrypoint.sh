@@ -1,7 +1,7 @@
 #!/bin/bash
 
 PJTDIR='src'
-GITREPO='serverless_local'
+GITREPO='sam_java'
 
 # Create Project initial directory if not exist
 cd ${GITREPO}
@@ -15,5 +15,10 @@ if [ ! -e ${PJTDIR} ]; then
 fi
 
 # Start local API Gateway
-cd ${PJTDIR}
-sam local start-api --host 0.0.0.0
+#cd ${PJTDIR}
+#sam local start-api --host 0.0.0.0
+
+# mock dumb application
+while true; do
+    sleep 5
+done

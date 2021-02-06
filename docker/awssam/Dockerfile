@@ -31,7 +31,7 @@ _  ___ |_ |/ |/ / ____/ /     ____/ /_  ___ |  /  / /  \n\
 /_/  |_|___/|__/  /____/______/____/ /_/  |_/_/  /_/   \n\
                        _/_____/                        \n\
 EOF' >> /root/.bashrc && \
-    git clone https://github.com/tuimac/serverless_local.git && \
+    git clone https://github.com/tuimac/sam_java.git && \
     cp /usr/share/zoneinfo/Asia/Tokyo /etc/localtime && \
     apk del tzdata && \
     git config --global user.name "tuimac" && \
