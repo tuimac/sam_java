@@ -6,30 +6,30 @@ Globals:
     Timeout: 20
 
 Resources:
-  HelloWorldFunction:
+  SampleFunction:
     Type: AWS::Serverless::Function
     Properties:
-      CodeUri: my-app
-      Handler: com.mycompany.app.App::handleRequest
+      CodeUri: function
+      Handler: handler.Handler::handleRequest
       Runtime: java11
       MemorySize: 512
       Environment:
         Variables:
           PARAM1: VALUE
       Events:
-        HelloWorld:
+        Sample:
           Type: Api 
           Properties:
-            Path: /my-app
+            Path: /handler
             Method: get
 
 Outputs:
-  HelloWorldApi:
-    Description: "API Gateway endpoint URL for Prod stage for Hello World function"
+  SampleApi:
+    Description: "API Gateway endpoint URL for Prod stage for Sample function"
     Value: !Sub "https://${ServerlessRestApi}.execute-api.${AWS::Region}.amazonaws.com/Prod/hello/"
-  HelloWorldFunction:
-    Description: "Hello World Lambda Function ARN"
-    Value: !GetAtt HelloWorldFunction.Arn
-  HelloWorldFunctionIamRole:
-    Description: "Implicit IAM Role created for Hello World function"
-    Value: !GetAtt HelloWorldFunctionRole.Arn
+  SampleFunction:
+    Description: "Sample Lambda Function ARN"
+    Value: !GetAtt SampleFunction.Arn
+  SampleFunctionIamRole:
+    Description: "Implicit IAM Role created for Sample function"
+    Value: !GetAtt SampleFunctionRole.Arn
