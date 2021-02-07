@@ -2,7 +2,6 @@ FROM alpine
 
 MAINTAINER tuimac
 
-EXPOSE 3000
 ENV AWS_DEFAULT_REGION=ap-northeast-1
 ARG gitusername=tuimac
 ARG gitemail=tuimac.devadm01@gmail.com

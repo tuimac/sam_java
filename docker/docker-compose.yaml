@@ -10,8 +10,7 @@ services:
   awssam:
     build: ./awssam
     container_name: awssam
-    ports:
-      - 3000:3000
+    hostname: awssam
     volumes:
       - /var/run/docker.sock:/var/run/docker.sock
     tty: true
